@@ -1,0 +1,23 @@
+#root, html, body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    box-sizing: border-box;
+}
+
+*, *::before, *::after{
+    box-sizing: inherit;
+}
+
+.app{
+    background: linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,.3)), url('https://source.unsplash.com/1600x950/?city');
+    background-size: cover;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.advice{
+
+}

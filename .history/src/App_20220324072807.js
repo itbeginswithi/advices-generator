@@ -1,0 +1,21 @@
+import React from "react";
+
+class App extends React.Component {
+  state = {
+    advice: "",
+  };
+  
+  fetchAdvice = async () => { 
+     try {
+         const response = axios.get('https://api.adviceslip.com/advice')
+     } catch (error) {
+         console.error(error);
+     }
+  }
+
+  render() {
+    return <div>App</div>;
+  }
+}
+
+export default App;
