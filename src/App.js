@@ -72,6 +72,7 @@ const App = () => {
   };
 
   return (
+    <div style={{display: 'flex', height: "100%"}}>
     <div className="app">
       <div className="advice">
         <h1>{advice}</h1>
@@ -93,10 +94,11 @@ const App = () => {
             color:  favIcon ? "white" : "black",
           }}
           onClick={clickedBtn}
-        >
+          >
           +
         </div>
       </div>
+    </div>
       <Sidebar newFavAdded={increment} setIncrement={setIncrement} setAdviceArray={setAdviceArray}  advice={advice} setFavIcon={setFavIcon}/>
     </div>
   );
