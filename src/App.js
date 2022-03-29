@@ -3,7 +3,7 @@ import axios from "axios";
 import { MdOutlineAdd} from 'react-icons/md';
 
 import Sidebar from "./components/Sidebar";
-import "./App.css";
+import "./App.scss";
 import { alreadyAddedToFavs, removeFromFavs } from "./util/handleFavs";
 
 const App = () => {

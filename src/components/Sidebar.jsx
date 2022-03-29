@@ -5,7 +5,7 @@ import { MdOutlineContentCopy } from "react-icons/md";
 import { IoLogoWhatsapp } from "react-icons/io";
 import { shareTextToWhatsApp } from "share-text-to-whatsapp";
 
-import classes from './sidebar.module.css';
+import classes from './sidebar.module.scss';
 
 const Sidebar = ({newFavAdded, setIncrement, setAdviceArray, setFavIcon, advice}) => {
   const [favourites, setFavourites] = useState([]);
@@ -41,7 +41,7 @@ const Sidebar = ({newFavAdded, setIncrement, setAdviceArray, setFavIcon, advice}
           favourites.map((advice, index) => (
             <div className={classes.advice} key={index}>
                     <h1>{advice}</h1>
-                    <div style={{display: 'flex', gap: '5px', alignItems: 'center'}}>
+                    <div style={{display: 'flex', gap: '5px', alignItems: 'center', flexWrap: 'wrap'}}>
                       <sup style={{
                         cursor: "pointer",
                         borderRadius: "10%",

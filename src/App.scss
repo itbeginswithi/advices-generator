@@ -26,6 +26,12 @@
   align-items: center;
 }
 
+@media (max-width: 768px) {
+ .advice{
+  width: 95%;
+ }
+}
+
 .advice h1 {
   font-family: Roboto;
   font-weight: 300;
