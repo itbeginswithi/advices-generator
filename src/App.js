@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { MdOutlineAdd } from 'react-icons/md';
+import { MdOutlineAdd} from 'react-icons/md';
 
 import Sidebar from "./components/Sidebar";
 import "./App.css";
@@ -60,11 +60,11 @@ const App = () => {
   function clickedBtn(){
     if(favIcon){ 
         const {advices, adviceIsRemoved} = removeFromFavs(advice);
-        //remove fav   
+       
         if(adviceIsRemoved){ 
-            setAdviceArray(advices);
-            setIncrement(prevState => prevState + 1);
-            setFavIcon(false);
+          setAdviceArray(advices);
+          setIncrement(prevState => prevState + 1);
+          setFavIcon(false);
         }
     }else{                   
         addToFav();
