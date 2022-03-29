@@ -1,5 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import { removeFromFavs } from '../util/handleFavs';
+import { ImBin } from "react-icons/im";
 
 import classes from './sidebar.module.css';
 
@@ -32,13 +33,15 @@ const Sidebar = ({newFavAdded, setIncrement, setAdviceArray, setFavIcon, advice}
                     <h1>{advice}</h1>
                     <sup style={{
                       cursor: "pointer",
-                      background: 'black',
+                      // background: 'black',
                       borderRadius: "10%",
-                      color: 'white',
+                      color: 'rgba(255, 0, 0 , 0.8)',
                       padding: '5px',
                       textAlign: "right",
                       lineHeight: "23px",
-                    }} onClick={() => removeAdviceFromFavs(advice)}>remove</sup>
+                    }} onClick={() => removeAdviceFromFavs(advice)}>
+                      <ImBin size="15px"/>
+                    </sup>
                 </div>
             )): (
               <p>Add new fav</p>

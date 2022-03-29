@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import { MdOutlineAdd } from 'react-icons/md';
 
 import Sidebar from "./components/Sidebar";
 import "./App.css";
@@ -29,7 +30,7 @@ const App = () => {
       if (!adviceExists) {
         //Adding a new advice to the adviceArray using the set function requires me to add two different advices (a, b) just to add (a) to the localhost for some reason.
         //That's why I opted for this way instead.
-        adviceArray.push(advice);
+        adviceArray.unshift(advice);
         localStorage.setItem("advices", JSON.stringify(adviceArray));
 
         /* Using setIncrement to trigger changes in the sidebar component (To show newly added favs) 
@@ -86,16 +87,21 @@ const App = () => {
             top: "0",
             cursor: "pointer",
             borderRadius: "50%",
-            width: '25px',
-            height: '25px',
+            width: '26px',
+            height: '26px',
             textAlign: "center",
             lineHeight: "23px",
             background: favIcon ? "black" : "white",
             color:  favIcon ? "white" : "black",
+            transition: "all .4s ease",
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            fontSize: '15px'
           }}
           onClick={clickedBtn}
           >
-          +
+          <MdOutlineAdd />
         </div>
       </div>
     </div>
