@@ -5,10 +5,12 @@ import { BsJournalBookmarkFill } from "react-icons/bs";
 import "./App.scss";
 import { alreadyAddedToFavs} from "./util/handleFavs";
 import { AdviceBox, Sidebar } from "./components";
-import { useBoomarkContext } from "./context/contextProvider";
+import { useBookmarkContext } from "./context/contextProvider";
+import  CSSTransition  from "react-transition-group/CSSTransition";
+import './components/Sidebar/keyframes.scss';
 
 const App = () => {
-  const {favIcon, setFavIcon, advice, setAdvice, setAdviceArray} = useBoomarkContext();
+  const {favIcon, setFavIcon, advice, setAdvice, setAdviceArray} = useBookmarkContext();
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -53,12 +55,17 @@ const App = () => {
         </button>
       </div>
       </div>
-      {isOpen && (
+      {/* {isOpen && ( */}
+      <CSSTransition mountOnEnter unmountOnExit in={isOpen} timeout={450} classNames={{
+        enterActive: 'ModalOpen',
+        exitActive: 'ModalClosed'
+      }}>
         <Sidebar
           setIsOpen={setIsOpen}
           isOpen={isOpen}
         />
-      )}
+        </CSSTransition>
+      {/* )} */}
     </div>
   );
 };

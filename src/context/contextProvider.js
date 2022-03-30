@@ -3,7 +3,7 @@ import { removeFromFavs } from "../util/handleFavs";
 
 const context = createContext();
 
-export const useBoomarkContext = () => useContext(context);
+export const useBookmarkContext = () => useContext(context);
 
 export const ContextProvider = ({ children }) => {
   //handling fav

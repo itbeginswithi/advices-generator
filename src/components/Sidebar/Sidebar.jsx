@@ -9,11 +9,12 @@ import { shareTextToWhatsApp } from "share-text-to-whatsapp";
 
 
 import classes from './Sidebar.module.scss';
-import { useBoomarkContext } from '../../context/contextProvider';
+import { useBookmarkContext } from '../../context/contextProvider';
 import noDataAnimation from '../../animations/89841-no-records-found.json';
+import './keyframes.scss';
 
 const Sidebar = ({isOpen, setIsOpen}) => {
-  const {toggleFav, increment, advice} = useBoomarkContext();
+  const {toggleFav, increment, advice} = useBookmarkContext();
   const [favourites, setFavourites] = useState([]);
 
   useEffect(() =>{
@@ -33,8 +34,9 @@ const Sidebar = ({isOpen, setIsOpen}) => {
     }
   }
 
+  const animationTiming = {enter: 250, exit: 200};
+
   return (
-    <CSSTransition mountOnEnter unmountOnExit in={isOpen} timeout={250}>
       <div className={classes.container}>
         <button className={classes.close} type="button" onClick={() => setIsOpen(false)}><FiChevronRight/></button>
         <div className={classes.sidebar__container}>
@@ -67,7 +69,6 @@ const Sidebar = ({isOpen, setIsOpen}) => {
           </ul>
         </div>
       </div>
-    </CSSTransition>
   )
 }
 

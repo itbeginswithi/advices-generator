@@ -2,10 +2,10 @@ import React from 'react'
 import { BsFillBookmarkPlusFill, BsFillBookmarkCheckFill} from 'react-icons/bs';
 import classes from './AdviceBox.module.scss';
 
-import { useBoomarkContext } from '../../context/contextProvider';
+import { useBookmarkContext } from '../../context/contextProvider';
 
 const AdviceBox = ({advice, favIcon, fetchAdvice}) => {
-  const { toggleFav } = useBoomarkContext();
+  const { toggleFav } = useBookmarkContext();
   
   return (
     <div className={classes.advice__container}>
