@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react'
-import CSSTransition from 'react-transition-group/CSSTransition';
 import Lottie from 'react-lottie';
 import { ImBin } from "react-icons/im";
 import { MdOutlineContentCopy } from "react-icons/md";
@@ -34,8 +33,6 @@ const Sidebar = ({isOpen, setIsOpen}) => {
     }
   }
 
-  const animationTiming = {enter: 250, exit: 200};
-
   return (
       <div className={classes.container}>
         <button className={classes.close} type="button" onClick={() => setIsOpen(false)}><FiChevronRight/></button>
@@ -60,11 +57,11 @@ const Sidebar = ({isOpen, setIsOpen}) => {
               ))
             }
 
-            {!favourites.length && 
-             ( <div style={{height: '100%' ,display: 'flex', justifyContent: 'center', alignItems: "center"}}> 
-                <Lottie  options={animationOptions} width={'25rem'} height="auto"/>
-               </div>
-             )
+            {!favourites.length &&  (
+                <div style={{height: '100%' ,display: 'flex', justifyContent: 'center', alignItems: "center"}}> 
+                  <Lottie  options={animationOptions} width={'25rem'} height="auto"/>
+                </div>
+              )
             }
           </ul>
         </div>

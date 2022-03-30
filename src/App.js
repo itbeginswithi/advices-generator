@@ -3,14 +3,15 @@ import axios from "axios";
 import { BsJournalBookmarkFill } from "react-icons/bs";
 
 import "./App.scss";
-import { alreadyAddedToFavs} from "./util/handleFavs";
+import { alreadyAddedToFavs } from "./util/handleFavs";
 import { AdviceBox, Sidebar } from "./components";
 import { useBookmarkContext } from "./context/contextProvider";
-import  CSSTransition  from "react-transition-group/CSSTransition";
-import './components/Sidebar/keyframes.scss';
+import CSSTransition from "react-transition-group/CSSTransition";
+import "./components/Sidebar/keyframes.scss";
 
 const App = () => {
-  const {favIcon, setFavIcon, advice, setAdvice, setAdviceArray} = useBookmarkContext();
+  const { favIcon, setFavIcon, advice, setAdvice, setAdviceArray } =
+    useBookmarkContext();
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -49,23 +50,25 @@ const App = () => {
           favIcon={favIcon}
           fetchAdvice={fetchAdvice}
         />
-      <div className="sidebar-open">
-        <button type="button" onClick={() => setIsOpen(true)}>
-          <BsJournalBookmarkFill />
-        </button>
+        <div className="sidebar-open">
+          <button type="button" onClick={() => setIsOpen(true)}>
+            <BsJournalBookmarkFill />
+          </button>
+        </div>
       </div>
-      </div>
-      {/* {isOpen && ( */}
-      <CSSTransition mountOnEnter unmountOnExit in={isOpen} timeout={450} classNames={{
-        enterActive: 'ModalOpen',
-        exitActive: 'ModalClosed'
-      }}>
-        <Sidebar
-          setIsOpen={setIsOpen}
-          isOpen={isOpen}
-        />
-        </CSSTransition>
-      {/* )} */}
+
+      <CSSTransition
+        mountOnEnter
+        unmountOnExit
+        in={isOpen}
+        timeout={450}
+        classNames={{
+          enterActive: "SidebarOpen",
+          exitActive: "SidebarClose",
+        }}
+      >
+        <Sidebar setIsOpen={setIsOpen} isOpen={isOpen} />
+      </CSSTransition>
     </div>
   );
 };
