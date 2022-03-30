@@ -1,0 +1,147 @@
+.advice {
+  &__container {
+    position: relative;
+    background-color: whitesmoke;
+    width: 40%;
+    min-height: 20%;
+    padding: 1rem 2rem;
+    border-radius: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__text {
+    font-family: Roboto, sans-serif;
+    font-weight: 300;
+  }
+
+  &__btn {
+    &_addToFav {
+      position: absolute;
+      right: -5px;
+      top: -5px;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 30px;
+      height: 30px;
+      font-size: 15px;
+
+      color: black;
+      background: white;
+      border-radius: 50%;
+      box-shadow: 0 0px 5px rgba(0, 0, 0, 0.5);
+      transition: all 0.4s ease;
+      user-select: none;
+      -moz-user-select: none;
+      -webkit-user-select: none;
+      cursor: pointer;
+
+      &:hover {
+        box-shadow: 0 0px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      &:active {
+        box-shadow: 0 0px 5px rgba(0, 0, 0, 0.5);
+      }
+    }
+
+    &_refresh {
+      position: relative;
+      outline: none;
+      text-decoration: none;
+      border-radius: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      text-transform: uppercase;
+      padding: 17px 0;
+      width: 150px;
+      opacity: 1;
+      background-color: #ffffff;
+      border: 1px solid rgba(22, 76, 167, 0.6);
+
+      &:hover {
+        animation: rotate 0.7s ease-in-out both;
+
+        & span {
+          animation: storm 0.7s ease-in-out both;
+          animation-delay: 0.06s;
+        }
+      }
+
+      & span {
+        color: #164ca7;
+        font-size: 12px;
+        font-weight: 500;
+        letter-spacing: 0.7px;
+      }
+    }
+  }
+}
+
+@media (max-width: 950px) {
+  .advice {
+    &__container {
+      width: 65%;
+    }
+  }
+}
+
+@media (max-width: 668px) {
+  .advice {
+    &__container {
+      width: 75%;
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .advice {
+    &__container {
+      width: 85%;
+    }
+  }
+}
+
+
+@keyframes rotate {
+  0% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+  25% {
+    transform: rotate(3deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(-3deg) translate3d(0, 0, 0);
+  }
+  75% {
+    transform: rotate(1deg) translate3d(0, 0, 0);
+  }
+  100% {
+    transform: rotate(0deg) translate3d(0, 0, 0);
+  }
+}
+
+@keyframes storm {
+  0% {
+    transform: translate3d(0, 0, 0) translateZ(0);
+  }
+  25% {
+    transform: translate3d(4px, 0, 0) translateZ(0);
+  }
+  50% {
+    transform: translate3d(-3px, 0, 0) translateZ(0);
+  }
+  75% {
+    transform: translate3d(2px, 0, 0) translateZ(0);
+  }
+  100% {
+    transform: translate3d(0, 0, 0) translateZ(0);
+  }
+}

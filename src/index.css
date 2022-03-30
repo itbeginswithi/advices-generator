@@ -7,8 +7,21 @@ body {
   box-sizing: border-box;
 }
 
+html{
+  font-size: 62.5%;
+}
+
 *,
 *::before,
 *::after {
   box-sizing: inherit;
+}
+
+::-webkit-scrollbar{
+  width: .5rem;
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: grey;
+  border-radius: 1rem;
 }

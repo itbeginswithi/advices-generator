@@ -1,16 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { MdOutlineAdd} from 'react-icons/md';
+import { BsJournalBookmarkFill } from "react-icons/bs";
 
-import Sidebar from "./components/Sidebar";
 import "./App.scss";
-import { alreadyAddedToFavs, removeFromFavs } from "./util/handleFavs";
+import { alreadyAddedToFavs} from "./util/handleFavs";
+import { AdviceBox, Sidebar } from "./components";
+import { useBoomarkContext } from "./context/contextProvider";
 
 const App = () => {
-  const [advice, setAdvice] = useState('');
-  const [adviceArray, setAdviceArray] = useState([]);
-  const [favIcon, setFavIcon] = useState(false);
-  const [increment, setIncrement] = useState(0);
+  const {favIcon, setFavIcon, advice, setAdvice, setAdviceArray} = useBoomarkContext();
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     fetchAdvice();
@@ -24,88 +23,42 @@ const App = () => {
     setAdviceArray(JSON.parse(localStorage.getItem("advices")));
   }, []);
 
-  const addToFav = () => {
-      const adviceExists = adviceArray.find((saying) => saying === advice);
-
-      if (!adviceExists) {
-        //Adding a new advice to the adviceArray using the set function requires me to add two different advices (a, b) just to add (a) to the localhost for some reason.
-        //That's why I opted for this way instead.
-        adviceArray.unshift(advice);
-        localStorage.setItem("advices", JSON.stringify(adviceArray));
-
-        /* Using setIncrement to trigger changes in the sidebar component (To show newly added favs) 
-           since Object.is doesnt dig deep into the adviceArray when comparing the old state to the current one.
-           see: https://github.com/facebook/react/issues/15858 
-        */
-        setIncrement(prevState => prevState + 1);
-    }
-  };
-
   const fetchAdvice = async () => {
     try {
       const response = await axios.get("https://api.adviceslip.com/advice");
       const { advice } = response.data.slip;
       setAdvice(advice);
 
-      if(alreadyAddedToFavs(advice)){
+      if (alreadyAddedToFavs(advice)) {
         setFavIcon(true);
-      }else{ 
+      } else {
         setFavIcon(false);
       }
     } catch (error) {
       console.error(error);
     }
   };
-                                        
-  function clickedBtn(){
-    if(favIcon){ 
-        const {advices, adviceIsRemoved} = removeFromFavs(advice);
-       
-        if(adviceIsRemoved){ 
-          setAdviceArray(advices);
-          setIncrement(prevState => prevState + 1);
-          setFavIcon(false);
-        }
-    }else{                   
-        addToFav();
-        setFavIcon(true);
-    }
-  };
 
   return (
-    <div style={{display: 'flex', height: "100%"}}>
-    <div className="app">
-      <div className="advice">
-        <h1>{advice}</h1>
-        <button className="button" onClick={fetchAdvice}>
-          <span>Refresh</span>
+    <div className="container">
+      <div className="app">
+        <AdviceBox
+          advice={advice}
+          favIcon={favIcon}
+          fetchAdvice={fetchAdvice}
+        />
+      <div className="sidebar-open">
+        <button type="button" onClick={() => setIsOpen(true)}>
+          <BsJournalBookmarkFill />
         </button>
-        <div
-          style={{
-            position: "absolute",
-            right: "0",
-            top: "0",
-            cursor: "pointer",
-            borderRadius: "50%",
-            width: '26px',
-            height: '26px',
-            textAlign: "center",
-            lineHeight: "23px",
-            background: favIcon ? "black" : "white",
-            color:  favIcon ? "white" : "black",
-            transition: "all .4s ease",
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            fontSize: '15px'
-          }}
-          onClick={clickedBtn}
-          >
-          <MdOutlineAdd />
-        </div>
       </div>
-    </div>
-      <Sidebar newFavAdded={increment} setIncrement={setIncrement} setAdviceArray={setAdviceArray}  advice={advice} setFavIcon={setFavIcon}/>
+      </div>
+      {isOpen && (
+        <Sidebar
+          setIsOpen={setIsOpen}
+          isOpen={isOpen}
+        />
+      )}
     </div>
   );
 };
