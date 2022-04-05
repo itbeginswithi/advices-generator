@@ -25,7 +25,7 @@ const Sidebar = ({isOpen, setIsOpen}) => {
   }
 
   const animationOptions = { 
-    loop: true,
+    loop: false,
     autoPlay: true,
     animationData: noDataAnimation,
     rendererSettings: {
