@@ -29,7 +29,7 @@ const App = () => {
   const fetchAdvice = async () => {
     try {
       const response = await axios.get("https://api.adviceslip.com/advice");
-      const { advice } = response.data.slip;
+      const { advice } = response?.data?.slip;
       setAdvice(advice);
 
       if (alreadyAddedToFavs(advice)) {

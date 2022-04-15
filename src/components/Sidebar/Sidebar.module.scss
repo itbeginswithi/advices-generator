@@ -47,7 +47,8 @@
 
     &__cta{ 
         display: flex;
-        gap: 5px;
+        gap: 8px;
+        justify-content: flex-end;
         align-items: center;
         flex-wrap: wrap;
 
@@ -55,16 +56,19 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 5px;
-            width: 30px;
-            height: 30px;
+            padding: 10px;
+            width: 40px;
+            height: 40px;
             border: 0;
-            border-radius: 50%;
             background-color: transparent;
+            border-radius: 50%;
             transition: all 0.35s ease;
             cursor: pointer;
-      
+            
             &:hover {
+              background-color: rgba($color: #fff, $alpha: 0.45);
+              backdrop-filter: blur(4px);
+              -webkit-backdrop-filter: blur(4px);
               box-shadow: 0 0px 8px rgba(0, 0, 0, 0.3);
             }
       

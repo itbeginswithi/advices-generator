@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react'
 import Lottie from 'react-lottie';
-import { ImBin } from "react-icons/im";
+import { MdDelete } from "react-icons/md";
 import { MdOutlineContentCopy } from "react-icons/md";
 import { FiChevronRight } from "react-icons/fi";
 import { IoLogoWhatsapp } from "react-icons/io";
@@ -44,13 +44,13 @@ const Sidebar = ({isOpen, setIsOpen}) => {
                         <h1 className={classes.advice__text}>{advice}</h1>
                         <div className={classes.advice__cta}>
                           <button type="button" title="remove" className={classes.advice__cta_btn} onClick={() => toggleFav(advice, true)}>
-                            <ImBin size="15px" color="rgba(255,0,0,0.8)"/>
+                            <MdDelete size="20px" color="rgba(255,0,0,0.8)"/>
                           </button>
                           <button type="button" title="copy" className={classes.advice__cta_btn} onClick={() => copyAdviceText()}>
-                            <MdOutlineContentCopy size="15px"/>
+                            <MdOutlineContentCopy size="20px"/>
                           </button>
                           <button type="button" title="whatsapp" className={classes.advice__cta_btn} onClick={() => shareTextToWhatsApp('"' + advice + '"')}>
-                            <IoLogoWhatsapp size="15px" color="rgba(0, 255, 32)"/>
+                            <IoLogoWhatsapp size="20px" color="#4ad66d"/>
                           </button>
                         </div>
                     </li>

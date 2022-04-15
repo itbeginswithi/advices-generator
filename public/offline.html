@@ -5,24 +5,119 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="images/png" href="./feather-pen.png"/>
+    <link rel="stylesheet" href="/offline.css">
     <title>Offline</title>
 </head>
 <body>
-    <div style="background-color: black; height: 100vh; display: flex; align-items:center; justify-content: center">
-        <div style="background-color: whitesmoke; padding: 15px" id="div">
-            <h4 style="font-family: Roboto; font-weight: 300">
-                You are offline
-                <script>
-                    const arr = JSON.parse(localStorage.getItem("advices"));
-                    console.log('hi');
-                     arr.map((advice) => {
-                        document.getElementById('div').append(
-                            <h1>{advice}</h1>
-                        )
-                     })
-                </script>
-            </h4>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: grey;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: inherit;
+        }
+
+        .main{
+            background-color: #001219;
+            min-height: 100vh;
+            display: flex;
+            align-items:center;
+            justify-content: center
+        }
+
+        .container{
+            padding: 10px;
+            max-width: 450px;
+            margin: 10px;
+            font-family: -apple-system, 'Segoe UI', Roboto, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .info{
+            font-family: inherit;
+            text-align: center;
+            margin: 0;
+            padding: 10px;
+            width: 100%;
+            border-radius: -2px;
+            color: white;
+        }
+
+        .quotes{
+            font-family:inherit;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            gap: 15px;
+        }
+
+        .quotes__noa{
+            color: white;
+            font-size: inherit;
+            text-align: start;
+        }
+
+        .quotes__noa-n{
+            padding: 8px;
+            background-color: #c9184a;
+            color: white;
+            font-weight: bold;
+            border-radius: 10px;
+            width: fit-content;
+        }
+
+        .quote{
+            font-size: inherit;
+            background-color: #495057;
+            color: #fff;
+            overflow-wrap: break-word;
+            padding: 15px;
+            width: 100%;
+            margin: 0;
+
+            background: rgba( 255, 255, 255, 0.15 );
+            backdrop-filter: blur( 4px );
+            -webkit-backdrop-filter: blur( 4px );
+            border-radius: 10px;
+            border: 1px solid rgba( 255, 255, 255, 0.05 );
+        }
+
+
+    </style>
+
+    <div class="main">
+        <div class="container">
+            <h3 class="info">You are offline</h3>
+            <div class="quotes">
+                <p class="quotes__noa">Advices saved: &nbsp;</p>
+            </div>
         </div>
     </div>
+
+    <script>
+        const advicesArray = JSON.parse(localStorage.getItem("advices"));
+
+        const numberOfAdvices = advicesArray.length;
+        const noaElement = document.createElement("span");
+        noaElement.setAttribute("class", "quotes__noa-n");
+        noaElement.innerText = numberOfAdvices;
+        document.querySelector('.quotes__noa').append(noaElement)
+
+        advicesArray.reverse().map((advice) => {
+            const i = document.createElement("p");
+            i.textContent = advice;
+            i.setAttribute("class", "quote");
+
+            console.log(i);
+
+            return document.querySelector('.quotes').appendChild(i)
+        })
+    </script>
 </body>
 </html>

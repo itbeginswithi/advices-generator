@@ -1,0 +1,32 @@
+body{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: grey;
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+.container{
+    background: #fff;
+    padding: 15px;
+    max-width: 450px;
+    margin: 0 10px;
+}
+
+.quotes{
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+}
+
+.quote{
+    background-image: rgb(188, 188, 188);
+    padding: 15px;
+}
