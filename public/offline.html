@@ -109,7 +109,7 @@
         noaElement.innerText = numberOfAdvices;
         document.querySelector('.quotes__noa').append(noaElement)
 
-        advicesArray.reverse().map((advice) => {
+        advicesArray.map((advice) => {
             const i = document.createElement("p");
             i.textContent = advice;
             i.setAttribute("class", "quote");
