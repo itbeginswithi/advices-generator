@@ -57,6 +57,7 @@ const Sidebar = ({isOpen, setIsOpen}) => {
               ))
             }
 
+            {/* Display a lottie animation if no advice is saved */}
             {!favourites.length &&  (
                 <div style={{height: '100%' ,display: 'flex', justifyContent: 'center', alignItems: "center"}}> 
                   <Lottie  options={animationOptions} width={'25rem'} height="auto"/>

@@ -106,7 +106,7 @@
         const numberOfAdvices = advicesArray.length;
         const noaElement = document.createElement("span");
         noaElement.setAttribute("class", "quotes__noa-n");
-        noaElement.innerText = numberOfAdvices;
+        noaElement.innerText = numberOfAdvices > 0 ? numberOfAdvices : 0;
         document.querySelector('.quotes__noa').append(noaElement)
 
         advicesArray.map((advice) => {
